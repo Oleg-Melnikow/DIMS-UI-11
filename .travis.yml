@@ -1,0 +1,26 @@
+language:
+  - node.js
+node_js:
+  - stable
+cache:
+  directories:
+    - node_modules
+branches:
+  - main
+  - dev
+  - master
+notifications:
+  email:
+    recipients:
+      - hincubator@gmail.com
+    on_success: change
+    on_failure: always
+before_install:
+  - yarn global add codecov
+install:
+  - yarn --frozen-lockfile
+script:
+  - yarn run test
+  - yarn run test:coverage:ci:codecov
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

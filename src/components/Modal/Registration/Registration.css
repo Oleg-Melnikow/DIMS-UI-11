@@ -1,14 +1,14 @@
-.formWrap{
-    width: 300px;
-    padding: 10px;
+.formWrap {
+  width: 300px;
+  padding: 10px;
 }
-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
-h2{
-    margin: 0;
-    padding: 10px;
+h2 {
+  margin: 0;
+  padding: 10px;
 }

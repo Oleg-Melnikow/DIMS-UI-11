@@ -1,0 +1,16 @@
+.header{
+    background: #0303d4;
+    color: white;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 5px;
+}

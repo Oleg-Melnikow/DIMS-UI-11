@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import { appTitle } from '../config';
-import logo from '../icons/logo.svg';
 import classes from './App.module.css';
+import Header from '../components/Header/Header';
+import { Members } from '../pages/Members';
+import { MemberProgress } from '../pages/MemberProgress';
 
 export const App = () => {
   useEffect(() => {
@@ -10,9 +13,12 @@ export const App = () => {
 
   return (
     <div className={classes.App}>
+      <Header />
       <header className={classes.Header}>
-        <img src={logo} className={classes.Logo} alt='logo' />
-        <h1 className={classes.Text}>Learn React with Dev Incubator</h1>
+        <Switch>
+          <Route path='/members' component={Members} />
+          <Route path='/member-progress' component={MemberProgress} />
+        </Switch>
       </header>
     </div>
   );

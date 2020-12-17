@@ -1,41 +1,44 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Table from '../components/Table/Table';
 import { Button } from '../components/Buttons/Button/Button';
-import Registration from '../components/Modal/Registration/Registration';
+import { getUsers } from '../firebase/api';
 
-export class Members extends React.PureComponent {
+class Members extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isModal: false,
+      users: null,
+      loading: false,
     };
   }
 
-  handleClick = () => {
-    const { isModal } = this.state;
-    this.setState(
-      {
-        isModal: !isModal,
-      },
-      () => console.log('Register', this.state),
+  componentDidMount() {
+    getUsers().then((result) =>
+      this.setState(
+        {
+          users: result,
+          loading: true,
+        },
+        () => console.log(this.state),
+      ),
     );
-  };
-
-  des = () => {
-    const { isModal } = this.state;
-    return isModal;
-  };
+  }
 
   render() {
+    const { users, loading } = this.state;
     return (
       <div>
-        <Button onClick={this.handleClick}>Register</Button>
-        <Table />
-        {this.des() && <Registration handleClick={this.handleClick} />}
+        <Button>
+          <NavLink to='/registration'>Register</NavLink>
+        </Button>
+        <Table users={users} loading={loading} />
       </div>
     );
   }
 }
+
+export default Members;
 
 Members.propTypes = {};
 Members.defaultProps = {};

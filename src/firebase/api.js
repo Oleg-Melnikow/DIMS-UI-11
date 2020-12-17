@@ -3,9 +3,8 @@ import db from './db';
 export function getUsers() {
   return db
     .collection('Users')
-    .doc('User')
     .get()
-    .then((users) => console.log(users.data()))
+    .then((users) => users.docs.map((user) => user.data()))
     .catch((er) => console.log(er));
 }
 

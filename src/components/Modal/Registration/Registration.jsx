@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Registration.css';
+import { NavLink } from 'react-router-dom';
+import { Button } from '../../Buttons/Button/Button';
 
-function Registration({ handleClick }) {
+function Registration() {
   return (
     <div className='formWrap'>
       <h2>User name</h2>
@@ -22,17 +24,13 @@ function Registration({ handleClick }) {
         </label>
         <div>
           <button type='button'>Save</button>
-          <button type='button' onClick={handleClick}>
-            Cancel
-          </button>
+          <Button>
+            <NavLink to='/members'>Cancel</NavLink>
+          </Button>
         </div>
       </form>
     </div>
   );
 }
-
-Registration.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-};
 
 export default Registration;

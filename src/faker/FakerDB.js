@@ -7,11 +7,12 @@ function FakerDB() {
     .then((users) => {
       if (users.docs.length <= 1) {
         createUser();
+        console.log('fake');
       }
     });
 
   function createUser() {
-    for (let i = 0; i <= 2; i + 1) {
+    for (let i = 0; i <= 2; i += 1) {
       const userId = faker.fake('{{random.number}}');
       const member = db.collection('Users').doc(userId);
       const members = db.collection('Users');

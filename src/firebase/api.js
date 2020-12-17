@@ -15,3 +15,14 @@ export async function setUsers() {
   });
   return setUser;
 }
+
+export function deleteUser(userID) {
+  return db
+    .collection('Users')
+    .doc(userID)
+    .delete()
+    .then(() => {
+      console.log('User was deleted');
+    })
+    .catch((error) => console.log(error));
+}

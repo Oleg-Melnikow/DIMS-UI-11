@@ -2,10 +2,15 @@ import React from 'react';
 import './Table.css';
 import PropTypes from 'prop-types';
 import { Button } from '../Buttons/Button/Button';
+import { deleteUser } from '../../firebase/api';
 
 function Table({ users, loading }) {
   function getDate(date) {
     return new Date(date).toLocaleDateString();
+  }
+
+  function deleteUsers(userId) {
+    return deleteUser(userId);
   }
 
   return (
@@ -38,7 +43,7 @@ function Table({ users, loading }) {
                   <Button>Progress</Button>
                   <Button>Tasks</Button>
                   <Button>Edit</Button>
-                  <Button>Delete</Button>
+                  <Button onClick={() => deleteUsers(user.userId)}>Delete</Button>
                 </div>
               </td>
             </tr>
